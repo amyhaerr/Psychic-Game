@@ -1,0 +1,22 @@
+h1 {
+    font-family: fantasy;
+    font-size: 30px;
+    padding: 20px;
+}
+
+p {
+    font-family: cursive;
+    padding: 15px;
+}
+
+
+
+body {
+    line-height: 1.5;
+    background-image: url(../images/crystal.jpg);
+    /* opacity: 0.5; */
+    background-repeat: no-repeat;
+
+    
+}
+
