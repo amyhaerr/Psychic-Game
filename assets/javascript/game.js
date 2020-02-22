@@ -1,5 +1,5 @@
 
-var computerChoices = "";
+var computerChoices = ["s", "n", "a", "p", "e"];
 var userGuess = "";
 var numGuesses = 6;
 var lettersGuessed = [];
@@ -7,7 +7,7 @@ var wins = 0;
 var losses = 0;
 
 
-var computerChoices = ["s", "n", "a", "p", "e"];
+
 
 
 var computerGuess = computerChoices[Math.floor(Math.random()
@@ -17,32 +17,32 @@ var computerGuess = computerChoices[Math.floor(Math.random()
 function resetGame() {
     numGuesses = 6;
     lettersGuessed = [];
-    computerChoices();
+    computerGuess = computerChoices[Math.floor(Math.random()
+        * computerChoices.length)];
 }
 
 document.onkeyup = function (event) {
 
     var letters = event.key.toLowerCase();
-    // lettersGuessed.push(letter);
+
 
     var userGuess = event.key;
 
-    if (letters.indexOf(userGuess.toLowerCase()) !== -1) {
 
-        if (userGuess !== computerChoices) {
+        if (userGuess !== computerGuess) {
             numGuesses--;
             lettersGuessed.push(userGuess);
-
-            if (userGuess === computerChoices) {
+        }
+           else if (userGuess === computerGuess) {
                 wins++;
                 resetGame()
 
-            } if (numGuesses === 0) {
+            } else if (numGuesses === 0) {
                 losses++;
                 resetGame();
             }
 
-        }
+        
 
 
         document.getElementById("number-text").textContent = "Guesses Left:" + numGuesses;
@@ -51,4 +51,4 @@ document.onkeyup = function (event) {
         document.getElementById("losses-text").textContent = "Losses: " + losses;
 
     };
-}
+// }
