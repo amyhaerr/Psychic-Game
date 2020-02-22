@@ -1,65 +1,54 @@
-// An array of possible letter options
-var computerChoices = ["s", "n", "a", "p", "e",];
 
-
-
+var computerChoices = "";
 var userGuess = "";
-
-// Create variables to hold Wins, Losses, Guesses Left, 
-// and Letters Guessed
-
+var numGuesses = 6;
+var lettersGuessed = [];
 var wins = 0;
 var losses = 0;
-var numGuesses = 6;
-
-// Array holds letters guessed
-var lettersGuessed = [];
 
 
+var computerChoices = ["s", "n", "a", "p", "e"];
 
-// function renderlettersGuessed(){
-//     if (lettersGuessedIndex <= lettersGuessed.length) {
 
-//     }
+var computerGuess = computerChoices[Math.floor(Math.random()
+    * computerChoices.length)];
 
-// renderlettersGuessed();
-// updateScore();
 
-// Function runs whenever the player presses a key
-document.onkeyup = function(event) {
+function resetGame() {
+    numGuesses = 6;
+    lettersGuessed = [];
+    randomLetterChoice();
+}
 
-    // Determines key pressed
+document.onkeyup = function (event) {
+
+    var letters = event.key.toLowerCase();
+    // lettersGuessed.push(letter);;
+
     var userGuess = event.key;
 
-    // Randomly chooses choice from options in the array
-    var computerGuess = computerChoices[Math.floor(Math.random() 
-        * computerChoices.length)];
+    if (letters.indexOf(userGuess.toLowerCase()) !== -1) {
 
-    // var options = ["s", "n", "a", "p", "e",];
-    
-
-    if (options.indexOf(userGuess) > -1) {
-        if (userGuess === computerGuess) {
-            wins++;
-            numGuesses = 6;
-            lettersGuessed = [];
-        }
-
-        if (userGuess = computerGuess) {
+        if (userGuess !== computerChoices) {
             numGuesses--;
             lettersGuessed.push(userGuess);
+
+            if (userGuess === computerChoices) {
+                wins++;
+                resetGame()
+
+            } if (numGuesses === 0) {
+                losses++;
+                resetGame();
+            }
+
         }
 
-        if (numGuesses === 0) {
-            numGuesses = 6;
-            losses++;
-            lettersGuessed = [];
-       }
 
+        document.getElementById("number-text").textContent = "Guesses Left:" + numGuesses;
+        document.getElementById("letters-text").textContent = "Letters you have Guessed:" + lettersGuessed;
+        document.getElementById("wins-text").textContent = "Wins: " + wins;
+        document.getElementById("losses-text").textContent = "Losses: " + losses;
 
-       
-          }
-};
-
-
- 
+    };
+}
