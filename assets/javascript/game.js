@@ -17,13 +17,13 @@ var computerGuess = computerChoices[Math.floor(Math.random()
 function resetGame() {
     numGuesses = 6;
     lettersGuessed = [];
-    randomLetterChoice();
+    computerChoices();
 }
 
 document.onkeyup = function (event) {
 
     var letters = event.key.toLowerCase();
-    // lettersGuessed.push(letter);;
+    // lettersGuessed.push(letter);
 
     var userGuess = event.key;
 
