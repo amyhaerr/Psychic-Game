@@ -1,21 +1,29 @@
 // An array of possible letter options
-var computerChoices = ["s", "n", "a", "p", "e"];
+var computerChoices = ["s", "n", "a", "p", "e",];
 
+
+
+var userGuess = "";
+
+// Create variables to hold Wins, Losses, Guesses Left, 
+// and Letters Guessed
+
+var wins = 0;
+var losses = 0;
+var numGuesses = 6;
 
 // Array holds letters guessed
 var lettersGuessed = [];
 
-// Variable assigned to hold 5 letters to be guessed
-var letterToGuess = null;
 
 
-// Create variables to hold Wins, Losses, Guesses Left, and Letters Guessed
+// function renderlettersGuessed(){
+//     if (lettersGuessedIndex <= lettersGuessed.length) {
 
-var wins = 0;
-var losses = 0;
-var numGuesses = 9;
+//     }
 
-
+// renderlettersGuessed();
+// updateScore();
 
 // Function runs whenever the player presses a key
 document.onkeyup = function(event) {
@@ -24,35 +32,34 @@ document.onkeyup = function(event) {
     var userGuess = event.key;
 
     // Randomly chooses choice from options in the array
-    var computerChoices = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    var computerGuess = computerChoices[Math.floor(Math.random() 
+        * computerChoices.length)];
 
-    if(options.indexOf(userGuess) >-1) {
-        if(userGuess===computerGuess) {
+    // var options = ["s", "n", "a", "p", "e",];
+    
+
+    if (options.indexOf(userGuess) > -1) {
+        if (userGuess === computerGuess) {
             wins++;
-            numGuesses=9;
-            lettersGuessed=[];
+            numGuesses = 6;
+            lettersGuessed = [];
         }
-   
-        if(userGuess !=computerGuess) {
+
+        if (userGuess = computerGuess) {
             numGuesses--;
             lettersGuessed.push(userGuess);
         }
-        
-        if(numGuesses ===0) {
-            numGuesses=9;
+
+        if (numGuesses === 0) {
+            numGuesses = 6;
             losses++;
             lettersGuessed = [];
-        }
-   
-    };
+       }
 
 
+       
+          }
+};
 
 
-
-
-    // userChoiceText.textContent = "You chose: " + userGuess;
-    
-    // winsText.textContent = "wins: " + wins;
-    // lossesText.textContent = "losses: " + losses;
-}
+ 
