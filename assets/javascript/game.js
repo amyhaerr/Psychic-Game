@@ -17,54 +17,49 @@ function countNumGuesses() {
     document.querySelector("#number-text").innerHTML = numGuesses;
 }
 
-// takes user guess and join string and visible on screen
+// countNumGuesses();
 
-function farUserGuesses() {
-    document.querySelector("#letters-text").innerHTML = lettersGuessed.join(", ");
-}
-
-countNumGuesses();
-
+// resets the game
 function resetGame() {
     numGuesses = 9;
     lettersGuessed = [];
 
-    var computerGuess = computerChoices[Math.floor(Math.random()
+    // Randomly picks letter for computer
+    computerGuess = computerChoices[Math.floor(Math.random()
         * computerChoices.length)];
 }
-
+// This function runs whenever the user presses
 document.onkeyup = function (event) {
 
-
+    // Makes the user guess is lower case
     var userGuess = event.key.toLowerCase();
 
-    farUserGuesses();
-    countNumGuesses();
 
+    //This logic determines the outcome of the game 
     if (userGuess !== computerGuess) {
         numGuesses--;
         lettersGuessed.push(userGuess);
-        // document.querySelector("#number-text").innerHTML=numGuesses;
+        document.querySelector("#number-text").innerHTML = numGuesses;
 
     }
-     if (userGuess === computerGuess) {
+    if (userGuess === computerGuess) {
         wins++;
-        numGuesses=9
-        // document.querySelector("#wins-text").innerHTML=wins;
+        numGuesses = 9
+        document.querySelector("#wins-text").innerHTML = wins;
         resetGame()
 
-    } 
-     if (numGuesses === 0) {
+    }
+    if (numGuesses === 0) {
         losses++;
         lettersGuessed = [];
         numGuesses = 9;
-        // document.querySelector("#losses-text").innerHTML = losses;
+        document.querySelector("#losses-text").innerHTML = losses;
         resetGame();
     }
 
 
 
-
+    // calls on HTML id's to update game
     document.getElementById("number-text").textContent = "Guesses Left:" + numGuesses;
     document.getElementById("letters-text").textContent = "Letters you have Guessed:" + lettersGuessed;
     document.getElementById("wins-text").textContent = "Wins: " + wins;
